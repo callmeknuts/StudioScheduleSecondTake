@@ -33,6 +33,11 @@ public class Main {
             }
             conn = DriverManager.getConnection(DB_CONNECTION_URL +DB_NAME, USER, PASSWORD);
             statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+            // create database
+            String createDatabase = "CREATE DATABASE clients";
+            statement.executeUpdate(createDatabase);
+
             //Create table in the database
             // clients table includes (Name,Phone Number, address, email)
             String createTableSQL = "CREATE TABLE clients " +
@@ -40,8 +45,6 @@ public class Main {
             statement.executeUpdate(createTableSQL);
             System.out.println("Table created");
 
-            String createDatabase = "CREATE DATABASE clients";
-            statement.executeUpdate(createDatabase);
 
 
             // TODO add some data
