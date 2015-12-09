@@ -151,7 +151,7 @@ public class StudioMainMenu extends JFrame {
                 com.Mike.Main.createUser(nameOfClient,numberOfClient,addressOfClient,emailOfClient);
                 clientName.setText("");
                 phoneNumber.setText("");
-                clientName.setText("");
+                clientAddress.setText("");
                 clientEmail.setText("");
 
 
