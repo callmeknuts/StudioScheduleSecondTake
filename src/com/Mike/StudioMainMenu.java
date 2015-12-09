@@ -1,5 +1,8 @@
 package com.Mike;
 
+import sun.applet.*;
+import sun.applet.Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,11 +30,19 @@ public class StudioMainMenu extends JFrame {
     private JPanel addClients;
     private JPanel deleteClients;
     private JPanel clientViewer;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
+    // for data entry
+    private JTextField clientName;
+    private JTextField phoneNumber;
+    private JTextField clientAddress;
+    private JTextField clientEmail;
+
+    private String nameOfClient;
+    private String numberOfClient;
+    private String addressOfClient;
+    private String emailOfClient;
+
+    private JList clientList;
+    private JButton submitButton;
     private JButton zButton;
 
     // Main menu card names
@@ -42,6 +53,14 @@ public class StudioMainMenu extends JFrame {
     private static String VIEW_CLIENTS = "Client list";
     private static String ADD_CLIENTS = "Client Text Inputs";
     private static String DELETE_CLIENTS = "Remove Clients";
+    private static String ADD_FIELDS = "add client text inputs";
+
+    // variables for client entries
+//    private static String clientName;
+//    private static int phoneNumber;
+//    private static String clientAddress;
+//    private static String clientEmail;
+
 
 
     StudioMainMenu(){
@@ -58,19 +77,19 @@ public class StudioMainMenu extends JFrame {
         rootPanel.add(clientPanel, CLIENTS);
         rootPanel.add(calenderPanel, CALENDER);
         // Add cards to the client panel -> client view (allows the changing of the JPanel within the client panel to display the different formats
-//        clientPanel.add(clientViewer,ADD_CLIENTS);
-//        clientPanel.add(clientViewer,VIEW_CLIENTS);
-//        clientPanel.add(clientViewer,DELETE_CLIENTS);
+        clientViewer.add(viewClients, VIEW_CLIENTS);
+        clientViewer.add(addClients, ADD_CLIENTS);
+        clientViewer.add(deleteClients, DELETE_CLIENTS);
 
 
 
+    // BUTTON FUNCTION FROM MAIN MENU
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
-        // BUTTON FUNCTION FROM MAIN MENU
         addRemoveClientButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,16 +101,16 @@ public class StudioMainMenu extends JFrame {
         checkScheduleButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout c2 = (CardLayout) rootPanel.getLayout();
-                c2.show(rootPanel,CALENDER);
+                CardLayout c1 = (CardLayout) rootPanel.getLayout();
+                c1.show(rootPanel,CALENDER);
             }
         });
         // BUTTON FUNCTION FROM CALENDER
         backToMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout c1 = (CardLayout)rootPanel.getLayout();
-                c1.show(rootPanel,MAIN_MENU);
+                CardLayout c3 = (CardLayout)rootPanel.getLayout();
+                c3.show(rootPanel,MAIN_MENU);
 
             }
         });
@@ -100,9 +119,53 @@ public class StudioMainMenu extends JFrame {
         returnToMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout c1 = (CardLayout)rootPanel.getLayout();
-                c1.show(rootPanel,MAIN_MENU);
+                CardLayout c2 = (CardLayout)rootPanel.getLayout();
+                c2.show(rootPanel,MAIN_MENU);
+            }
+        });
+        addClientButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout c2 = (CardLayout)clientViewer.getLayout();
+                c2.show(clientViewer,ADD_CLIENTS);
+            }
+        });
+        viewClientsRecordsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout c2 = (CardLayout)clientViewer.getLayout();
+                c2.show(clientViewer,VIEW_CLIENTS);
+            }
+        });
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nameOfClient = clientName.getText();
+                numberOfClient = phoneNumber.getText();
+                addressOfClient = clientAddress.getText();
+                emailOfClient = clientEmail.getText();
+                System.out.println(nameOfClient);
+                System.out.println(numberOfClient);
+                System.out.println(addressOfClient);
+                System.out.println(emailOfClient);
+                com.Mike.Main.createUser(nameOfClient,numberOfClient,addressOfClient,emailOfClient);
+                clientName.setText("");
+                phoneNumber.setText("");
+                clientName.setText("");
+                clientEmail.setText("");
+
+
+            }
+        });
+        viewClientsRecordsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout c3 = (CardLayout)clientViewer.getLayout();
+                c3.show(clientViewer,VIEW_CLIENTS);
+
+                com.Mike.Main.showUser(clientList);
             }
         });
     }
+
 }

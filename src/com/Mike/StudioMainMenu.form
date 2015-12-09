@@ -64,20 +64,21 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="9b886" binding="viewClients" layout-manager="CardLayout" hgap="0" vgap="0">
+              <grid id="9b886" binding="viewClients" layout-manager="GridBagLayout">
                 <constraints>
                   <card name="Card1"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="97e2a" class="javax.swing.JLabel">
+                  <component id="3078e" class="javax.swing.JList" binding="clientList">
                     <constraints>
-                      <card name="Card1"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="50"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
-                    <properties>
-                      <text value="Check 1"/>
-                    </properties>
+                    <properties/>
                   </component>
                 </children>
               </grid>
@@ -88,33 +89,27 @@
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <hspacer id="9a2fb">
+                  <component id="87400" class="javax.swing.JTextField" binding="phoneNumber">
                     <constraints>
-                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                  </hspacer>
-                  <component id="bfb20" class="javax.swing.JTextField" binding="textField1" default-binding="true">
-                    <constraints>
-                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="f8657" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+                  <component id="b854f" class="javax.swing.JTextField" binding="clientAddress">
                     <constraints>
-                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties/>
                   </component>
-                  <component id="87400" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+                  <component id="4b3de" class="javax.swing.JTextField" binding="clientEmail">
                     <constraints>
-                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                       <gridbag weightx="0.0" weighty="0.0"/>
@@ -123,20 +118,11 @@
                   </component>
                   <component id="19224" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties>
-                      <text value="Client Name :"/>
-                    </properties>
-                  </component>
-                  <component id="7d7" class="javax.swing.JLabel">
-                    <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
-                      <text value="Group Affiliation :"/>
+                      <text value="Client Name :"/>
                     </properties>
                   </component>
                   <component id="d3a10" class="javax.swing.JLabel">
@@ -147,15 +133,6 @@
                     <properties>
                       <text value="Phone Number :"/>
                     </properties>
-                  </component>
-                  <component id="b854f" class="javax.swing.JTextField" binding="textField4" default-binding="true">
-                    <constraints>
-                      <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="150" height="-1"/>
-                      </grid>
-                      <gridbag weightx="0.0" weighty="0.0"/>
-                    </constraints>
-                    <properties/>
                   </component>
                   <component id="97a06" class="javax.swing.JLabel">
                     <constraints>
@@ -175,32 +152,65 @@
                       <text value="Email :"/>
                     </properties>
                   </component>
-                  <component id="4b3de" class="javax.swing.JTextField" binding="textField5" default-binding="true">
+                  <component id="bfb20" class="javax.swing.JTextField" binding="clientName">
                     <constraints>
-                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
                       </grid>
                       <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="c538e" class="javax.swing.JButton" binding="submitButton" default-binding="true">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Submit"/>
+                    </properties>
+                  </component>
+                  <component id="b5df6" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <text value="Must enter all fields"/>
+                    </properties>
                   </component>
                 </children>
               </grid>
-              <grid id="5c5ad" binding="deleteClients" layout-manager="CardLayout" hgap="0" vgap="0">
+              <grid id="5c5ad" binding="deleteClients" layout-manager="GridBagLayout">
                 <constraints>
                   <card name="Card3"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
                 <children>
-                  <component id="1e228" class="javax.swing.JLabel">
+                  <component id="e1c58" class="javax.swing.JLabel">
                     <constraints>
-                      <card name="Card1"/>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
                     </constraints>
                     <properties>
                       <text value="Check 3"/>
                     </properties>
                   </component>
+                  <hspacer id="30d82">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </hspacer>
+                  <vspacer id="8efd5">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                  </vspacer>
                 </children>
               </grid>
             </children>
