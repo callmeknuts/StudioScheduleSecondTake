@@ -32,14 +32,16 @@ public class StudioMainMenu extends JFrame {
     private JPanel clientViewer;
     // for data entry
     private JTextField clientFName;
+    private JTextField clientLName;
     private JTextField phoneNumber;
     private JTextField clientAddress;
     private JTextField clientEmail;
     // to  assign data collected during data entry, allowing it to be used
-    private String nameOfClient;
+    private String fNameOfClient;
+    private String lNameOfClient;
     private String numberOfClient;
-    private String addressOfClient;
 
+    private String addressOfClient;
     private String emailOfClient;
     private JList clientList;
     private JButton submitButton;
@@ -47,7 +49,6 @@ public class StudioMainMenu extends JFrame {
     private JButton button2;
     private JButton button3;
     private JButton button4;
-    private JTextField clientLName;
     //private JButton zButton;
 
     // Main menu card names
@@ -163,15 +164,15 @@ public class StudioMainMenu extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nameOfClient = clientFName.getText();
+                fNameOfClient = clientFName.getText();
                 numberOfClient = phoneNumber.getText();
                 addressOfClient = clientAddress.getText();
                 emailOfClient = clientEmail.getText();
-                System.out.println(nameOfClient);
+                System.out.println(fNameOfClient);
                 System.out.println(numberOfClient);
                 System.out.println(addressOfClient);
                 System.out.println(emailOfClient);
-                com.Mike.Main.createUser(nameOfClient,numberOfClient,addressOfClient,emailOfClient);
+                com.Mike.Main.createUser(fNameOfClient,numberOfClient,addressOfClient,emailOfClient);
                 clientFName.setText("");
                 phoneNumber.setText("");
                 clientAddress.setText("");

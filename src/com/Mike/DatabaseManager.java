@@ -37,7 +37,7 @@ public class DatabaseManager {
             // clients table includes (Name,Phone Number, address, email)
             //TODO add If EXISTS
             String createTableSQL = "CREATE TABLE IF NOT EXISTS clients " +
-                    "(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id), name VARCHAR(30),number VARCHAR(14),address VARCHAR(30),email VARCHAR(40))";
+                    "(id INT NOT NULL AUTO_INCREMENT, PRIMARY KEY (id), fName VARCHAR(20),lName VARCHAR (20),number VARCHAR(14),address VARCHAR(30),email VARCHAR(40))";
             statement.executeUpdate(createTableSQL);
             //System.out.println("Table created");
 
