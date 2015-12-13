@@ -1,8 +1,5 @@
 package com.Mike;
 
-import sun.applet.*;
-import sun.applet.Main;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,11 +12,14 @@ public class StudioMainMenu extends JFrame {
 
     private JPanel rootPanel;
     private JPanel clientPanel;
+//    private Calendar calendar;
     private JPanel calenderPanel;
+
+    private JPanel studioPanel;
     private JPanel mainMenuPanel;
     private JButton addRemoveClientButton;
     private JButton checkScheduleButton;
-    private JButton bookSessionButton;
+    private JButton studioDescriptionButton;
     private JButton quitButton;
     private JButton addClientButton;
     private JButton deleteClientButton;
@@ -31,39 +31,49 @@ public class StudioMainMenu extends JFrame {
     private JPanel deleteClients;
     private JPanel clientViewer;
     // for data entry
-    private JTextField clientName;
+    private JTextField clientFName;
     private JTextField phoneNumber;
     private JTextField clientAddress;
     private JTextField clientEmail;
-
+    // to  assign data collected during data entry, allowing it to be used
     private String nameOfClient;
     private String numberOfClient;
     private String addressOfClient;
-    private String emailOfClient;
 
+    private String emailOfClient;
     private JList clientList;
     private JButton submitButton;
-    private JButton zButton;
+    private JButton button1;
+    private JButton button2;
+    private JButton button3;
+    private JButton button4;
+    private JTextField clientLName;
+    //private JButton zButton;
 
     // Main menu card names
     private static String MAIN_MENU = "Main menu panel";
     private static String CLIENTS = "Client interaction panel";
-    private  static String CALENDER = "Calender panel";
+    private static String CALENDER = "Calender panel";
+    private static String STUDIO_DESC = "Studio information";
     // Client panel - Client viewer card names
     private static String VIEW_CLIENTS = "Client list";
     private static String ADD_CLIENTS = "Client Text Inputs";
     private static String DELETE_CLIENTS = "Remove Clients";
-    private static String ADD_FIELDS = "add client text inputs";
+    //private static String ADD_FIELDS = "add client text inputs";
 
-    // variables for client entries
-//    private static String clientName;
-//    private static int phoneNumber;
-//    private static String clientAddress;
-//    private static String clientEmail;
 
 
 
     StudioMainMenu(){
+        // sets gui window to take look of windows from host computer
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
+        catch (ClassNotFoundException e){
+            System.out.println(e);}
+        catch (InstantiationException e){}
+        catch (IllegalAccessException e){}
+        catch (UnsupportedLookAndFeelException e){}
+
 
         setTitle("Studio Assistant");
         setContentPane(rootPanel);
@@ -72,18 +82,23 @@ public class StudioMainMenu extends JFrame {
         setSize(new Dimension(600, 400));
         setVisible(true);
 
-        // Add cards to the root Jpanel. Each  card needs a string to identify it, use constants.
+        /** Add cards to the root Jpanel. Each  card needs a string to identify it, use constants.*/
         rootPanel.add(mainMenuPanel, MAIN_MENU);
         rootPanel.add(clientPanel, CLIENTS);
         rootPanel.add(calenderPanel, CALENDER);
-        // Add cards to the client panel -> client view (allows the changing of the JPanel within the client panel to display the different formats
+        //TODO Why can't I instiante the calender
+      //  Calendar calendar = new Calendar();
+       // rootPanel.add(calendar, CALENDER);
+        rootPanel.add(studioPanel,STUDIO_DESC);
+        /** Add cards to the client panel -> client view (allows the changing of the JPanel
+         *  within the client panel to display the different formats*/
         clientViewer.add(viewClients, VIEW_CLIENTS);
         clientViewer.add(addClients, ADD_CLIENTS);
         clientViewer.add(deleteClients, DELETE_CLIENTS);
 
 
 
-    // BUTTON FUNCTION FROM MAIN MENU
+    /**BUTTON FUNCTION FROM MAIN MENU*/
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -105,7 +120,15 @@ public class StudioMainMenu extends JFrame {
                 c1.show(rootPanel,CALENDER);
             }
         });
-        // BUTTON FUNCTION FROM CALENDER
+        studioDescriptionButton.addActionListener(new ActionListener() {
+            @ Override
+            public void actionPerformed(ActionEvent e){
+                CardLayout c1 = (CardLayout) rootPanel.getLayout();
+                c1.show(rootPanel,STUDIO_DESC);
+
+            }
+        });
+        /** BUTTON FUNCTION FROM CALENDER*/
         backToMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,7 +138,7 @@ public class StudioMainMenu extends JFrame {
             }
         });
 
-        // BUTTON FUNCTIONS FROM CLIENTS
+        /** BUTTON FUNCTIONS FROM CLIENTS */
         returnToMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -140,7 +163,7 @@ public class StudioMainMenu extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                nameOfClient = clientName.getText();
+                nameOfClient = clientFName.getText();
                 numberOfClient = phoneNumber.getText();
                 addressOfClient = clientAddress.getText();
                 emailOfClient = clientEmail.getText();
@@ -149,7 +172,7 @@ public class StudioMainMenu extends JFrame {
                 System.out.println(addressOfClient);
                 System.out.println(emailOfClient);
                 com.Mike.Main.createUser(nameOfClient,numberOfClient,addressOfClient,emailOfClient);
-                clientName.setText("");
+                clientFName.setText("");
                 phoneNumber.setText("");
                 clientAddress.setText("");
                 clientEmail.setText("");
@@ -166,6 +189,27 @@ public class StudioMainMenu extends JFrame {
                 com.Mike.Main.showUser(clientList);
             }
         });
+        deleteClientButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                com.Mike.Main.deleteUser(clientList);
+
+            }
+        });
     }
 
+    /** CREATE CALANDER  */
+    //TODO move to unique class, ? how do I change cards outside of this class?
+    public class calendar {
+
+    }
+
+    public JPanel getStudioPanel() {
+        return studioPanel;
+    }
+
+    public JPanel getRootPanel() {
+        return rootPanel;
+    }
 }
+
