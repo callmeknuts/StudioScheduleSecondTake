@@ -1,5 +1,7 @@
 package com.Mike;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -165,15 +167,18 @@ public class StudioMainMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 fNameOfClient = clientFName.getText();
+                lNameOfClient = clientLName.getText();
                 numberOfClient = phoneNumber.getText();
                 addressOfClient = clientAddress.getText();
                 emailOfClient = clientEmail.getText();
                 System.out.println(fNameOfClient);
+                System.out.println(lNameOfClient);
                 System.out.println(numberOfClient);
                 System.out.println(addressOfClient);
                 System.out.println(emailOfClient);
-                com.Mike.Main.createUser(fNameOfClient,numberOfClient,addressOfClient,emailOfClient);
+                com.Mike.Main.createUser(fNameOfClient,lNameOfClient,numberOfClient,addressOfClient,emailOfClient);
                 clientFName.setText("");
+                clientLName.setText("");
                 phoneNumber.setText("");
                 clientAddress.setText("");
                 clientEmail.setText("");

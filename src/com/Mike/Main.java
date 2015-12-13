@@ -18,12 +18,12 @@ public class Main {
         //shutdown();
     }
 
-    public static void createUser(String name,String number,String address, String email){
-        String createUser = "INSERT INTO clients (name,number,address,email) VALUES ('"+ name + "','" + number + "','" + address + "','" + email + "')";
+    public static void createUser(String fName,String lName,String number,String address, String email){
+        String createUser = "INSERT INTO clients (fName,lName,number,address,email) VALUES ('"+ fName + "','" + lName + "','"  +number + "','" + address + "','" + email + "')";
         System.out.println(createUser);
         try {
             DatabaseManager.statement.executeUpdate(createUser);
-            JOptionPane.showMessageDialog(null, "User" + name + " successfully created.");
+            JOptionPane.showMessageDialog(null, "User" + fName + " successfully created.");
         } catch (Exception e){
             System.out.println(e);
         }
@@ -54,11 +54,13 @@ public class Main {
             ResultSet rs = DatabaseManager.statement.executeQuery(showUsers);
             while (rs.next()){
                 String id = rs.getString("id");
-                String name = rs.getString("name");
+                String fName = rs.getString("fName");
+                String lName = rs.getString("lName");
                 String number = rs.getString("number");
                 String address = rs.getString("address");
                 String email = rs.getString("Email");
-                Client client = new Client(id, name, number,address,email);
+                Client client = new Client(id, fName, lName,
+                        number,address,email);
                 listModel.addElement(client);
             }
             clientList.setModel(listModel);
