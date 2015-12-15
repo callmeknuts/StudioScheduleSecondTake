@@ -4,12 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 
 /**
  * Created by Mike on 12/7/2015.
  */
 public class StudioMainMenu extends JFrame {
-    // top-level panels
+    /** top-level panels   */
     public JPanel rootPanel;
     private JPanel clientPanel;
     public JPanel calenderPanel;
@@ -29,13 +30,13 @@ public class StudioMainMenu extends JFrame {
     private JPanel addClients;
     private JPanel deleteClients;
     private JPanel clientViewer;
-    // for data entry
+    /** for data entry */
     private JTextField clientFName;
     private JTextField clientLName;
     private JTextField phoneNumber;
     private JTextField clientAddress;
     private JTextField clientEmail;
-    // to  assign data collected during data entry, allowing it to be used
+    /** to  assign data collected during data entry, allowing it to be used */
     private String fNameOfClient;
     private String lNameOfClient;
     private String numberOfClient;
@@ -44,11 +45,17 @@ public class StudioMainMenu extends JFrame {
     private String emailOfClient;
     private JList clientList;
     private JButton submitButton;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JTable table1;
+
+    private JButton studioThreeButton;
+    private JButton studioOneButton;
+    private JButton studioTwoButton;
+    private JPanel studioViewer;
+    private JPanel studioOne;
+    private JPanel studioTwo;
+    private JPanel studioThree;
+    private JTextField threeApxJestner2800TextField;
+    private JLabel studioName;
+    private JButton mainMenuButton;
     //private JButton zButton;
 
     // Main menu card names
@@ -60,9 +67,13 @@ public class StudioMainMenu extends JFrame {
     private static String VIEW_CLIENTS = "Client list";
     private static String ADD_CLIENTS = "Client Text Inputs";
     private static String DELETE_CLIENTS = "Remove Clients";
+    // Studio panel - studioViewer card names
+    private static String STUDIO_ONE = "Studio one description";
+    private static String STUDIO_TWO = "Studio two description";
+    private static String STUDIO_THREE = "Studio three description";
+
+//    private static String CALENDEROBJECT = "Calender";
     //private static String ADD_FIELDS = "add client text inputs";
-
-
 
 
     StudioMainMenu(){
@@ -87,13 +98,20 @@ public class StudioMainMenu extends JFrame {
         rootPanel.add(mainMenuPanel, MAIN_MENU);
         rootPanel.add(clientPanel, CLIENTS);
         rootPanel.add(calenderPanel, CALENDER);
+//        rootPanel.add(calender);
         //TODO Why can't I instiante the calender
         rootPanel.add(studioPanel,STUDIO_DESC);
+
         /** Add cards to the client panel -> client view (allows the changing of the JPanel
          *  within the client panel to display the different formats*/
         clientViewer.add(viewClients, VIEW_CLIENTS);
         clientViewer.add(addClients, ADD_CLIENTS);
         clientViewer.add(deleteClients, DELETE_CLIENTS);
+        /** Add cards to the client      */
+        studioViewer.add(studioOne, STUDIO_ONE);
+        studioViewer.add(studioTwo, STUDIO_TWO);
+        studioViewer.add(studioThree,STUDIO_THREE);
+
 
 
 
@@ -133,6 +151,7 @@ public class StudioMainMenu extends JFrame {
         backToMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+              //  Calender calender = new Calender();
                 CardLayout c3 = (CardLayout)rootPanel.getLayout();
                 c3.show(rootPanel,MAIN_MENU);
 
@@ -209,6 +228,37 @@ public class StudioMainMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 com.Mike.Main.deleteUser(clientList);
 
+            }
+        });
+        studioOneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studioName.setText("Studio One");
+                CardLayout c4 = (CardLayout)studioViewer.getLayout();
+                c4.show(studioViewer, STUDIO_ONE);
+            }
+        });
+        studioTwoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studioName.setText("Studio Two");
+                CardLayout c4 = (CardLayout)studioViewer.getLayout();
+                c4.show(studioViewer,STUDIO_TWO);
+            }
+        });
+        studioThreeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                studioName.setText("Studio Three");
+                CardLayout c4 = (CardLayout)studioViewer.getLayout();
+                c4.show(studioViewer, STUDIO_THREE);
+            }
+        });
+        mainMenuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardLayout c2 = (CardLayout)rootPanel.getLayout();
+                c2.show(rootPanel,MAIN_MENU);
             }
         });
     }

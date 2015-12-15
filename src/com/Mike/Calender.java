@@ -7,12 +7,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 
-public class Calender extends JPanel{
+public class Calender extends StudioMainMenu{
     static JLabel lblMonth, lblYear;
     static JButton btnPrev, btnNext;
     static JTable tblCalendar;
     static JComboBox cmbYear;
-    //static JFrame calenderPanel;
+    static JFrame calenderPanel;
     static Container pane;
     static DefaultTableModel mtblCalendar; //Table model
     static JScrollPane stblCalendar; //The scrollpane
@@ -21,13 +21,9 @@ public class Calender extends JPanel{
 
     public Calender() {
 //        Prepare frame
+        CardLayout c1 = (CardLayout)rootPanel.getLayout();
+        c1.show(rootPanel,getCALENDER());
 
-
-//        calenderPanel = new JFrame ("Gestionnaire de clients"); //Create frame
-//        calenderPanel.setSize(330, 375); //Set size to 400x400 pixels
-//        pane = calenderPanel.getContentPane(); //Get content pane
-//        pane.setLayout(null); //Apply null layout
-//        calenderPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Close when X is clicked
 
         //Create controls
         lblMonth = new JLabel ("January");
@@ -67,8 +63,8 @@ public class Calender extends JPanel{
         stblCalendar.setBounds(10, 50, 300, 250);
 
         //Make frame visible
-       // calenderPanel.setResizable(false);
-       // calenderPanel.setVisible(true);
+        calenderPanel.setResizable(false);
+        calenderPanel.setVisible(true);
 
         //Get real month/year
         GregorianCalendar cal = new GregorianCalendar(); //Create calendar
