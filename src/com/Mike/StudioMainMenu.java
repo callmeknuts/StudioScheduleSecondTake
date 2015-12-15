@@ -1,7 +1,5 @@
 package com.Mike;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,14 +9,13 @@ import java.awt.event.ActionListener;
  * Created by Mike on 12/7/2015.
  */
 public class StudioMainMenu extends JFrame {
-
-    private JPanel rootPanel;
+    // top-level panels
+    public JPanel rootPanel;
     private JPanel clientPanel;
-//    private Calendar calendar;
-    private JPanel calenderPanel;
-
+    public JPanel calenderPanel;
     private JPanel studioPanel;
     private JPanel mainMenuPanel;
+
     private JButton addRemoveClientButton;
     private JButton checkScheduleButton;
     private JButton studioDescriptionButton;
@@ -51,6 +48,7 @@ public class StudioMainMenu extends JFrame {
     private JButton button2;
     private JButton button3;
     private JButton button4;
+    private JTable table1;
     //private JButton zButton;
 
     // Main menu card names
@@ -90,8 +88,6 @@ public class StudioMainMenu extends JFrame {
         rootPanel.add(clientPanel, CLIENTS);
         rootPanel.add(calenderPanel, CALENDER);
         //TODO Why can't I instiante the calender
-      //  Calendar calendar = new Calendar();
-       // rootPanel.add(calendar, CALENDER);
         rootPanel.add(studioPanel,STUDIO_DESC);
         /** Add cards to the client panel -> client view (allows the changing of the JPanel
          *  within the client panel to display the different formats*/
@@ -114,6 +110,7 @@ public class StudioMainMenu extends JFrame {
                 CardLayout c1 = (CardLayout) rootPanel.getLayout();
                 c1.show(rootPanel, CLIENTS);
 
+
             }
         });
         checkScheduleButton.addActionListener(new ActionListener() {
@@ -121,6 +118,7 @@ public class StudioMainMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 CardLayout c1 = (CardLayout) rootPanel.getLayout();
                 c1.show(rootPanel,CALENDER);
+
             }
         });
         studioDescriptionButton.addActionListener(new ActionListener() {
@@ -168,15 +166,26 @@ public class StudioMainMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 fNameOfClient = clientFName.getText();
                 lNameOfClient = clientLName.getText();
-                numberOfClient = phoneNumber.getText();
+                if (isPhoneNumberValid(phoneNumber.getText())){
+                    numberOfClient = phoneNumber.getText();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter a valid phone number.");
+                }
                 addressOfClient = clientAddress.getText();
-                emailOfClient = clientEmail.getText();
+                if(isEmailAddressValid(clientEmail.getText())){
+                    emailOfClient = clientEmail.getText();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please use a valid Email address.");
+                }
                 System.out.println(fNameOfClient);
                 System.out.println(lNameOfClient);
                 System.out.println(numberOfClient);
                 System.out.println(addressOfClient);
                 System.out.println(emailOfClient);
-                com.Mike.Main.createUser(fNameOfClient,lNameOfClient,numberOfClient,addressOfClient,emailOfClient);
+                while (emailOfClient != null && numberOfClient != null) {
+                    com.Mike.Main.createUser(fNameOfClient, lNameOfClient, numberOfClient, addressOfClient, emailOfClient);
+                    break;
+                }
                 clientFName.setText("");
                 clientLName.setText("");
                 phoneNumber.setText("");
@@ -203,12 +212,28 @@ public class StudioMainMenu extends JFrame {
             }
         });
     }
+    /** data validation regex pattern methods to validate JTextfields */
+    public static boolean isPhoneNumberValid(String phoneNumber) {
+        if (phoneNumber == null) return  false;
+        if (phoneNumber.matches("\\d{10}")) return true;
+        else if (phoneNumber.matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}")) return true;
+        else if (phoneNumber.matches("\\(\\d{3}\\)-\\d{3}-\\d{4}")) return true;
+        else return false;
+    }
+
+    public static boolean isEmailAddressValid(String emailAddress){
+        if (emailAddress == null)return false;
+        if (emailAddress.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"))return  true;
+        else return false;
+    }
+
+
+    public static String getCALENDER() {
+        return CALENDER;
+    }
 
     /** CREATE CALANDER  */
-    //TODO move to unique class, ? how do I change cards outside of this class?
-    public class calendar {
 
-    }
 
     public JPanel getStudioPanel() {
         return studioPanel;

@@ -37,12 +37,12 @@ public class Main {
         // TODO stop exception being thrown when delete button is pressed with empty database
             try {
                 DatabaseManager.statement.execute(delete);
-                System.out.println(clientList.getSelectedIndex());
-                clientList.remove(clientList.getSelectedIndex());
+                System.out.println("selected index:" + clientList.getSelectedIndex());
+//                clientList.remove(clientList.getSelectedIndex());
                 JOptionPane.showMessageDialog(null, "User deleted.");
-                clientList.updateUI();
+                clientList.revalidate();
             } catch (SQLException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }
 

@@ -7,33 +7,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 
-public class Calendar extends JPanel{
+public class Calender extends JPanel{
     static JLabel lblMonth, lblYear;
     static JButton btnPrev, btnNext;
     static JTable tblCalendar;
     static JComboBox cmbYear;
-    static JFrame frmMain;
+    //static JFrame calenderPanel;
     static Container pane;
     static DefaultTableModel mtblCalendar; //Table model
     static JScrollPane stblCalendar; //The scrollpane
-//    static JPanel pnlCalendar; //The panel
     static int realDay, realMonth, realYear, currentMonth, currentYear;
 
 
-    public Calendar () {
-//    public static void main(String[] args) {
-        try {UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());}
-        catch (ClassNotFoundException e) {}
-        catch (InstantiationException e) {}
-        catch (IllegalAccessException e) {}
-        catch (UnsupportedLookAndFeelException e) {}
+    public Calender() {
+//        Prepare frame
 
-        //Prepare frame
-//        frmMain = new JFrame ("Gestionnaire de clients"); //Create frame
-//        frmMain.setSize(330, 375); //Set size to 400x400 pixels
-//        pane = frmMain.getContentPane(); //Get content pane
+
+//        calenderPanel = new JFrame ("Gestionnaire de clients"); //Create frame
+//        calenderPanel.setSize(330, 375); //Set size to 400x400 pixels
+//        pane = calenderPanel.getContentPane(); //Get content pane
 //        pane.setLayout(null); //Apply null layout
-//        frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Close when X is clicked
+//        calenderPanel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Close when X is clicked
 
         //Create controls
         lblMonth = new JLabel ("January");
@@ -47,7 +41,7 @@ public class Calendar extends JPanel{
 //        pnlCalendar = new JPanel(null);
 
         //Set border
-        setBorder(BorderFactory.createTitledBorder("Calendar"));
+      //  setBorder(BorderFactory.createTitledBorder("Calender"));
 
         //Register action listeners
         btnPrev.addActionListener(new btnPrev_Action());
@@ -73,8 +67,8 @@ public class Calendar extends JPanel{
         stblCalendar.setBounds(10, 50, 300, 250);
 
         //Make frame visible
-        frmMain.setResizable(false);
-        frmMain.setVisible(true);
+       // calenderPanel.setResizable(false);
+       // calenderPanel.setVisible(true);
 
         //Get real month/year
         GregorianCalendar cal = new GregorianCalendar(); //Create calendar
