@@ -4,6 +4,7 @@ import java.sql.*;
 
 /**
  * Created by Mike on 12/12/2015.
+ * I borrowed this connection class from our lab example,    , written by Clara James
  */
 public class DatabaseManager {
     static final String DB_CONNECTION_URL = "jdbc:mysql://localhost:3306/";
