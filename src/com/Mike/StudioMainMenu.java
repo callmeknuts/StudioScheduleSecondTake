@@ -53,7 +53,7 @@ public class StudioMainMenu extends JFrame {
     private JPanel studioOne;
     private JPanel studioTwo;
     private JPanel studioThree;
-    private JTextField threeApxJestner2800TextField;
+    private JTextField studioOneEquipmentTextField;
     private JLabel studioName;
     private JButton mainMenuButton;
     //private JButton zButton;

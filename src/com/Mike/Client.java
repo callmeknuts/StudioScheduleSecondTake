@@ -1,6 +1,7 @@
 package com.Mike;
 
 /**
+ * client object for sql statements
  * Created by Mike on 12/8/2015.
  */
 public class Client {

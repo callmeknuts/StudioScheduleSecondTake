@@ -369,12 +369,12 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="dd568" class="javax.swing.JTextField" binding="threeApxJestner2800TextField" default-binding="true">
+                      <component id="dd568" class="javax.swing.JTextField" binding="studioOneEquipmentTextField" default-binding="true">
                         <constraints/>
                         <properties>
                           <editable value="false"/>
                           <horizontalAlignment value="10"/>
-                          <text value="Three apx- jestner 2800"/>
+                          <text value="Studio One Equipment"/>
                         </properties>
                       </component>
                     </children>
